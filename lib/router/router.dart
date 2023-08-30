@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:schedule/features/author/view/author_screen.dart';
 import 'package:schedule/features/features.dart';
 
 part 'router.gr.dart';
@@ -18,6 +19,10 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               page: SearchRoute.page,
               path: 'search',
+            ),
+            AutoRoute(
+              page: AuthorRoute.page,
+              path: 'author',
             ),
           ],
         ),

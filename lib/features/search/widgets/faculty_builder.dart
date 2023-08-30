@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schedule/custom_icons.dart';
 import 'package:schedule/models/faculties.dart';
 
 class FacultyBuilder extends StatelessWidget {
@@ -20,7 +21,7 @@ class FacultyBuilder extends StatelessWidget {
             margin: const EdgeInsets.all(10),
             child: Center(
               child: ListTile(
-                trailing: const Icon(Icons.arrow_forward_ios),
+                trailing: const Icon(CustomIcons.arrow_right),
                 leading: Image.asset(
                   faculties[index].facultyIcon,
                   height: 70,
