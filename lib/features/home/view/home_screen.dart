@@ -14,9 +14,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return AutoTabsRouter(
-      routes: const [SearchRoute(), FavoriteRoute(), AuthorRoute()],
-      builder: (context, child) {
+    return AutoTabsRouter.pageView(
+      routes: const [
+        SearchRoute(),
+        FavoriteRoute(),
+        AuthorRoute(),
+      ],
+      curve: Curves.linear,
+      duration: Duration(milliseconds: 200),
+      builder: (context, child, _) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
           body: child,
