@@ -17,8 +17,31 @@ class ScheduleHistory extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               margin: const EdgeInsets.symmetric(horizontal: 8),
-              width: 200,
-              child: const Card(),
+              width: 220,
+              child: const Card(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'С 11.09.2023 по 11.11.2023',
+                      style: TextStyle(
+                        color: Color.fromARGB(109, 0, 0, 0),
+                      ),
+                    ),
+                    Text(
+                      'Нечетная неделя',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(135, 0, 0, 0),
+                      ),
+                    ),
+                    Text(
+                      'ПМИ-20-1',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
             );
           },
         ),

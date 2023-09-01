@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schedule/custom_icons.dart';
+import 'package:schedule/theme/custom_icons.dart';
 
 class SearchButton extends StatelessWidget {
   const SearchButton({

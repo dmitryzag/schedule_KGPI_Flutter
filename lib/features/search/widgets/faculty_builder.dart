@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:schedule/bloc/bloc.dart';
-import 'package:schedule/custom_icons.dart';
+import 'package:schedule/theme/custom_icons.dart';
 import 'package:schedule/repositories/schedule/abstract_schedule_repository.dart';
 
 class FacultyBuilder extends StatefulWidget {
