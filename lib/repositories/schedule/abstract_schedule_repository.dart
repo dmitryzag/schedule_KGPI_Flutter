@@ -1,4 +1,4 @@
-import 'package:schedule/models/faculties.dart';
+import 'package:schedule/repositories/schedule/models/faculties.dart';
 
 abstract class AbstractScheduleRepository {
   Future<List<Faculty>> getFaculties();

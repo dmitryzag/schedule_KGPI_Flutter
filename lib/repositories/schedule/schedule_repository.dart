@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:schedule/models/faculties.dart';
+import 'package:schedule/repositories/schedule/models/faculties.dart';
 import 'package:schedule/repositories/schedule/abstract_schedule_repository.dart';
 
 class ScheduleRepository implements AbstractScheduleRepository {

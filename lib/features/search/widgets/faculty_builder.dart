@@ -38,22 +38,22 @@ class _FacultyBuilderState extends State<FacultyBuilder> {
                 width: double.infinity,
                 margin: const EdgeInsets.symmetric(horizontal: 1),
                 height: 115,
-                child: GestureDetector(
-                  onTap: () {
-                    print('3123123');
-                  },
-                  child: Card(
-                    margin: const EdgeInsets.all(10),
+                child: Card(
+                  margin: const EdgeInsets.all(10),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(13),
+                    onTap: () {
+                      // Handle card tap
+                    },
                     child: Center(
                       child: ListTile(
                         trailing: const Icon(CustomIcons.arrow_right),
                         leading: Image.asset(
-                          faculties.getIconFaculty(
-                              faculties.facultyId)!, // ИЗБАВИТЬСЯ ОТ КОММЕНТА
+                          faculties.getIconFaculty(faculties.facultyId)!,
                           height: 70,
                         ),
                         title: Text(
-                          faculties.facultyName, // ИЗБАВИТЬСЯ ОТ КОММЕНТА
+                          faculties.facultyName,
                           style: theme.textTheme.bodyMedium,
                         ),
                       ),
