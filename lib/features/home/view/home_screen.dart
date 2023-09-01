@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         AuthorRoute(),
       ],
       curve: Curves.linear,
-      duration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 200),
       builder: (context, child, _) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
