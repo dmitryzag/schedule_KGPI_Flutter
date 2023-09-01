@@ -1,39 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:schedule/bloc/bloc.dart';
 import 'package:schedule/custom_icons.dart';
-import 'package:schedule/models/faculties.dart';
+import 'package:schedule/repositories/schedule/abstract_schedule_repository.dart';
 
-class FacultyBuilder extends StatelessWidget {
+class FacultyBuilder extends StatefulWidget {
   const FacultyBuilder({
     super.key,
   });
 
   @override
+  State<FacultyBuilder> createState() => _FacultyBuilderState();
+}
+
+class _FacultyBuilderState extends State<FacultyBuilder> {
+  final _facultyBloc = FacultyBloc(GetIt.I<AbstractScheduleRepository>());
+
+  @override
+  void initState() {
+    _facultyBloc.add(FacultyLoad());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return SliverList.builder(
-      itemCount: faculties.length,
-      itemBuilder: (context, index) {
-        return Container(
-          width: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 1),
-          height: 115,
-          child: Card(
-            margin: const EdgeInsets.all(10),
-            child: Center(
-              child: ListTile(
-                trailing: const Icon(CustomIcons.arrow_right),
-                leading: Image.asset(
-                  faculties[index].facultyIcon,
-                  height: 70,
+    return BlocBuilder<FacultyBloc, FacultyState>(
+      bloc: _facultyBloc,
+      builder: (context, state) {
+        if (state is FacultyLoaded) {
+          return SliverList.builder(
+            itemCount: state.facultyList.length,
+            itemBuilder: (context, index) {
+              final faculties = state.facultyList[index];
+              return Container(
+                width: double.infinity,
+                margin: const EdgeInsets.symmetric(horizontal: 1),
+                height: 115,
+                child: GestureDetector(
+                  onTap: () {
+                    print('3123123');
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.all(10),
+                    child: Center(
+                      child: ListTile(
+                        trailing: const Icon(CustomIcons.arrow_right),
+                        leading: Image.asset(
+                          faculties.getIconFaculty(
+                              faculties.facultyId)!, // ИЗБАВИТЬСЯ ОТ КОММЕНТА
+                          height: 70,
+                        ),
+                        title: Text(
+                          faculties.facultyName, // ИЗБАВИТЬСЯ ОТ КОММЕНТА
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                title: Text(
-                  faculties[index].facultyName,
-                  style: theme.textTheme.bodyMedium,
-                ),
-              ),
-            ),
-          ),
-        );
+              );
+            },
+          );
+        }
+        if (state is FacultyLoading) {
+          return const SliverToBoxAdapter(
+              child: Center(child: CircularProgressIndicator()));
+        }
+        return const SliverToBoxAdapter();
       },
     );
   }
