@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, child, _) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
+          backgroundColor: Color.fromARGB(222, 235, 235, 235).withOpacity(1),
           body: child,
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tabsRouter.activeIndex,

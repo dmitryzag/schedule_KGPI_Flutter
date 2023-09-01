@@ -21,7 +21,6 @@ class ScheduleAppBar extends StatelessWidget {
       snap: true,
       floating: true,
       pinned: true,
-      surfaceTintColor: Colors.transparent,
       title: Text(
         'Расписание',
         style: theme.textTheme.bodyLarge,

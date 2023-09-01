@@ -23,7 +23,6 @@ class ScheduleRepository implements AbstractScheduleRepository {
           ),
         );
       }
-      print(faculties);
       return faculties;
     } catch (error) {
       print('Ошибка при получении факультетов: $error');

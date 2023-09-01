@@ -21,3 +21,8 @@ final class FacultyLoading extends FacultyState {
   @override
   List<Object?> get props => throw [];
 }
+
+final class FacultyLoadingFailure extends FacultyState {
+  @override
+  List<Object?> get props => throw [];
+}

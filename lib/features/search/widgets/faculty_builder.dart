@@ -65,10 +65,38 @@ class _FacultyBuilderState extends State<FacultyBuilder> {
           );
         }
         if (state is FacultyLoading) {
-          return const SliverToBoxAdapter(
-              child: Center(child: CircularProgressIndicator()));
+          return SliverToBoxAdapter(
+            child: Container(
+              height: 400,
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(),
+            ),
+          );
         }
-        return const SliverToBoxAdapter();
+        if (state is FacultyLoadingFailure) {
+          return SliverToBoxAdapter(
+            child: Container(
+                height: 400,
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    Text(
+                      'Что-то пошло не так...',
+                      style: theme.textTheme.bodyLarge,
+                    ),
+                    const SizedBox(height: 20),
+                    Image.asset('assets/images/connection_failure.png'),
+                  ],
+                )),
+          );
+        }
+
+        return const SliverToBoxAdapter(
+          child: Center(
+            child: Text('Что-то пошло не так'),
+          ),
+        );
       },
     );
   }

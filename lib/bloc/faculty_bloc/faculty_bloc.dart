@@ -9,13 +9,17 @@ part 'faculty_state.dart';
 
 class FacultyBloc extends Bloc<FacultyEvent, FacultyState> {
   FacultyBloc(this._scheduleRepository) : super(FacultyInitial()) {
-    on<FacultyLoad>((event, emit) async {
-      if (state is! FacultyLoaded) {
-        emit(FacultyLoading());
-      }
-      final facultyList = await _scheduleRepository.getFaculties();
-      emit(FacultyLoaded(facultyList: facultyList));
-    });
+    try {
+      on<FacultyLoad>((event, emit) async {
+        if (state is! FacultyLoaded) {
+          emit(FacultyLoading());
+        }
+        final facultyList = await _scheduleRepository.getFaculties();
+        emit(FacultyLoaded(facultyList: facultyList));
+      });
+    } catch (e) {
+      emit(FacultyLoadingFailure());
+    }
   }
   final AbstractScheduleRepository _scheduleRepository;
 }
