@@ -1,1 +1,1 @@
-export 'faculty_bloc/view.dart';
+export 'schedule_bloc/view.dart';

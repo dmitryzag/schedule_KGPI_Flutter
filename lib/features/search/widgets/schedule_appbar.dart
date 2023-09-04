@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:schedule/bloc/bloc.dart';
 
 import 'search_button.dart';
 
 class ScheduleAppBar extends StatelessWidget {
-  const ScheduleAppBar({
-    super.key,
-  });
+  const ScheduleAppBar({super.key, this.title});
+  final title;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,15 @@ class ScheduleAppBar extends StatelessWidget {
       floating: true,
       pinned: true,
       title: Text(
-        'Расписание',
+        title ?? 'Расписание',
         style: theme.textTheme.bodyLarge,
       ),
-      bottom: const PreferredSize(
-        preferredSize: Size.fromHeight(74),
-        child: SearchButton(),
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(78),
+        child: BlocProvider(
+          create: (context) => ScheduleBloc(),
+          child: SearchButton(),
+        ),
       ),
     );
   }

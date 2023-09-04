@@ -6,11 +6,23 @@ Map<int, String> facultyIcons = {
   29: 'assets/images/fpp.png',
 };
 
+Map<int, String> facultyAbbr = {
+  16: 'ФФ',
+  17: 'ФФКЕП',
+  18: 'ФИП',
+  19: 'ФИМЭ',
+  29: 'ФПП',
+};
+
 class Faculty {
   final int facultyId;
   final String facultyName;
   Faculty({required this.facultyId, required this.facultyName});
-  String? getIconFaculty(facultyId) {
+  String? getAbbr() {
+    return facultyAbbr[facultyId];
+  }
+
+  String? getIconFaculty() {
     return facultyIcons[facultyId];
   }
 }

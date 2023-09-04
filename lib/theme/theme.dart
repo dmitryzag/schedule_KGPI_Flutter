@@ -3,8 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 final themeApp = ThemeData(
   cardTheme: const CardTheme(color: Colors.white),
-  scaffoldBackgroundColor: Color.fromARGB(222, 235, 235, 235),
+  scaffoldBackgroundColor: Color.fromARGB(255, 238, 238, 238),
   textTheme: TextTheme(
+      labelLarge: GoogleFonts.inter(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: const Color.fromARGB(139, 0, 0, 0).withOpacity(0.9)),
       labelMedium: GoogleFonts.inter(
           fontSize: 15,
           fontWeight: FontWeight.w500,

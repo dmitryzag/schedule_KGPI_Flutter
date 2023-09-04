@@ -17,7 +17,7 @@ class ScheduleHistory extends StatelessWidget {
           itemBuilder: (context, index) {
             return Container(
               margin: const EdgeInsets.symmetric(horizontal: 8),
-              width: 220,
+              width: 230,
               child: const Card(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
