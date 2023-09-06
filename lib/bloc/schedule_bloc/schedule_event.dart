@@ -28,7 +28,7 @@ class LoadAcademicGroup extends ScheduleEvent {
     required this.facultyId,
   });
   @override
-  List<Object?> get props => [course];
+  List<Object?> get props => [course, educationFormId, facultyId];
 }
 
 class LoadScheduleGroup extends ScheduleEvent {

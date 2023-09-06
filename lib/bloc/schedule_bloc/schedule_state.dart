@@ -33,7 +33,7 @@ final class SearchGroupState extends ScheduleState {
   SearchGroupState({this.groups = const []});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [groups];
 }
 
 final class AcademicGroupState extends ScheduleState {

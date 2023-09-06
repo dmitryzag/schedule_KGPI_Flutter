@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:schedule/bloc/schedule_bloc/view.dart';
-import 'package:schedule/features/pdf_view/view/pdf_view.dart';
 import 'package:schedule/repositories/schedule/abstract_schedule_repository.dart';
 import 'package:schedule/repositories/schedule/models/academic_group.dart';
+import 'package:schedule/router/router.dart';
 
 import '../../features.dart';
 
 @RoutePage()
-class ScheduleAcademic extends StatefulWidget {
-  const ScheduleAcademic({super.key, required this.academicGroup});
+class ScheduleOfGroup extends StatefulWidget {
+  const ScheduleOfGroup({super.key, required this.academicGroup});
   final AcademicGroup academicGroup;
 
   @override
-  State<ScheduleAcademic> createState() => _ScheduleAcademicState();
+  State<ScheduleOfGroup> createState() => _ScheduleOfGroupState();
 }
 
-class _ScheduleAcademicState extends State<ScheduleAcademic> {
+class _ScheduleOfGroupState extends State<ScheduleOfGroup> {
   final scheduleBloc = ScheduleBloc(GetIt.I<AbstractScheduleRepository>());
 
   @override
@@ -33,8 +33,7 @@ class _ScheduleAcademicState extends State<ScheduleAcademic> {
         body: Container(
       child: CustomScrollView(
         slivers: [
-          ScheduleAppBar(
-              title: '${widget.academicGroup.name} ${widget.academicGroup.id}'),
+          ScheduleAppBar(title: widget.academicGroup.name),
           const SliverToBoxAdapter(child: SizedBox(height: 10)),
           BlocBuilder<ScheduleBloc, ScheduleState>(
             bloc: scheduleBloc,
@@ -50,17 +49,10 @@ class _ScheduleAcademicState extends State<ScheduleAcademic> {
                             ? 'С ${scheduleGroup.dateFrom} по ${scheduleGroup.dateTo}'
                             : scheduleGroup.description),
                         Text(scheduleGroup.typeName),
-                        Text(scheduleGroup.attachmentFile),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => PDFViewer(
-                                  url: scheduleGroup.attachmentFile,
-                                ),
-                              ),
-                            );
+                            AutoRouter.of(context).push(
+                                PDFViewer(url: scheduleGroup.attachmentFile));
                           },
                           child: const Text('Открыть PDF'),
                         ),

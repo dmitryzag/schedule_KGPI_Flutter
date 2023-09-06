@@ -74,7 +74,7 @@ class _SpecialitiesScreenState extends State<SpecialitiesScreen> {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(13),
                             onTap: () {
-                              AutoRouter.of(context).push(ScheduleOfGroup(
+                              AutoRouter.of(context).push(ScheduleAcademic(
                                   academicGroup: academicGroup[index]));
                             },
                             child: Padding(

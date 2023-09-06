@@ -4,6 +4,7 @@ import 'package:schedule/features/author/view/author_screen.dart';
 import 'package:schedule/features/education_form/view/education_screen.dart';
 import 'package:schedule/features/favorites/view/favorite_schedule.dart';
 import 'package:schedule/features/home/view/home_screen.dart';
+import 'package:schedule/features/pdf_view/view/pdf_view.dart';
 import 'package:schedule/features/schedule/view/schedule.dart';
 import 'package:schedule/features/search/view/search_screen.dart';
 import 'package:schedule/features/specialities/view/specialities_list.dart';
@@ -47,8 +48,12 @@ class AppRouter extends _$AppRouter {
           path: '/specialities_list',
         ),
         AutoRoute(
-          page: ScheduleOfGroup.page,
+          page: ScheduleAcademic.page,
           path: '/schedule',
+        ),
+        AutoRoute(
+          page: PDFViewer.page,
+          path: '/schedule_group',
         ),
       ];
 }

@@ -43,11 +43,21 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
-    ScheduleOfGroup.name: (routeData) {
-      final args = routeData.argsAs<ScheduleOfGroupArgs>();
+    PDFViewer.name: (routeData) {
+      final args = routeData.argsAs<PDFViewerArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: ScheduleAcademic(
+        child: PDFViewerGroup(
+          key: args.key,
+          url: args.url,
+        ),
+      );
+    },
+    ScheduleAcademic.name: (routeData) {
+      final args = routeData.argsAs<ScheduleAcademicArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ScheduleOfGroup(
           key: args.key,
           academicGroup: args.academicGroup,
         ),
@@ -154,29 +164,66 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ScheduleOfGroup]
-class ScheduleOfGroup extends PageRouteInfo<ScheduleOfGroupArgs> {
-  ScheduleOfGroup({
+/// [PDFViewer]
+class PDFViewer extends PageRouteInfo<PDFViewerArgs> {
+  PDFViewer({
+    Key? key,
+    required dynamic url,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PDFViewer.name,
+          args: PDFViewerArgs(
+            key: key,
+            url: url,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'PDFViewer';
+
+  static const PageInfo<PDFViewerArgs> page = PageInfo<PDFViewerArgs>(name);
+}
+
+class PDFViewerArgs {
+  const PDFViewerArgs({
+    this.key,
+    required this.url,
+  });
+
+  final Key? key;
+
+  final dynamic url;
+
+  @override
+  String toString() {
+    return 'PDFViewerArgs{key: $key, url: $url}';
+  }
+}
+
+/// generated route for
+/// [ScheduleAcademic]
+class ScheduleAcademic extends PageRouteInfo<ScheduleAcademicArgs> {
+  ScheduleAcademic({
     Key? key,
     required AcademicGroup academicGroup,
     List<PageRouteInfo>? children,
   }) : super(
-          ScheduleOfGroup.name,
-          args: ScheduleOfGroupArgs(
+          ScheduleAcademic.name,
+          args: ScheduleAcademicArgs(
             key: key,
             academicGroup: academicGroup,
           ),
           initialChildren: children,
         );
 
-  static const String name = 'ScheduleOfGroup';
+  static const String name = 'ScheduleAcademic';
 
-  static const PageInfo<ScheduleOfGroupArgs> page =
-      PageInfo<ScheduleOfGroupArgs>(name);
+  static const PageInfo<ScheduleAcademicArgs> page =
+      PageInfo<ScheduleAcademicArgs>(name);
 }
 
-class ScheduleOfGroupArgs {
-  const ScheduleOfGroupArgs({
+class ScheduleAcademicArgs {
+  const ScheduleAcademicArgs({
     this.key,
     required this.academicGroup,
   });
@@ -187,7 +234,7 @@ class ScheduleOfGroupArgs {
 
   @override
   String toString() {
-    return 'ScheduleOfGroupArgs{key: $key, academicGroup: $academicGroup}';
+    return 'ScheduleAcademicArgs{key: $key, academicGroup: $academicGroup}';
   }
 }
 

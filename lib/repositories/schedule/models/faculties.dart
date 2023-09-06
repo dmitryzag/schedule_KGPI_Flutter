@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 Map<int, String> facultyIcons = {
   16: 'assets/images/ff.png',
   17: 'assets/images/ffkep.png',
@@ -14,7 +16,7 @@ Map<int, String> facultyAbbr = {
   29: 'ФПП',
 };
 
-class Faculty {
+class Faculty extends Equatable {
   final int facultyId;
   final String facultyName;
   Faculty({required this.facultyId, required this.facultyName});
@@ -25,4 +27,7 @@ class Faculty {
   String? getIconFaculty() {
     return facultyIcons[facultyId];
   }
+
+  @override
+  List<Object?> get props => [facultyId, facultyName];
 }
